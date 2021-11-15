@@ -1,0 +1,165 @@
+// css header
+header {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  @include transition($t);
+  height: var(--height-header);
+
+  &.active {
+    background-color: $black-cl;
+    @include transition($t);
+  }
+  .container-fluid {
+    height: 100%;
+    .header__main {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      img {
+        display: block;
+      }
+      .hidden {
+        display: none;
+      }
+      .menu {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        @include transform(translateX(-50%));
+        .menu__item-link {
+          padding: 0 35px;
+          letter-spacing: 0.375px;
+          @include text(15px, pb, 2.25rem, $white50-cl, uppercase);
+          @include transition($t);
+          &:hover {
+            color: $white-cl;
+          }
+          &.active {
+            color: $primary-cl;
+          }
+          @include maxW(1200px) {
+            padding: 0 25px;
+            @include transition($t);
+          }
+          @include maxW(1050px) {
+            padding: 0 15px;
+            @include transition($t);
+          }
+        }
+        @include sm {
+          display: none;
+        }
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        .header__lang {
+          position: relative;
+          &-current {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            span {
+              margin-right: 4px;
+              @include text(16px, pb, auto, $white-cl, uppercase);
+            }
+            .lang-arr {
+              svg {
+                fill: $primary-cl;
+                @include size(10px);
+              }
+            }
+          }
+          &-option {
+            background: transparent;
+            &.changeBg {
+              background: $black-cl;
+            }
+            @include br(2px);
+            position: absolute;
+            top: 2rem;
+            right: 0;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            @include transition($t);
+            a {
+              text-align: center;
+              display: block;
+              padding: 4px 0;
+              @include text(16px, pb, auto, $white-cl, uppercase);
+              @include transition($t);
+
+              &:hover {
+                color: $primary-cl;
+                @include transition($t);
+              }
+            }
+            &.active {
+              opacity: 1;
+              pointer-events: auto;
+              @include transition($t);
+            }
+          }
+        }
+        .toggle {
+          @include size(28px, 20px);
+          position: relative;
+          cursor: pointer;
+          margin-left: 2rem;
+          display: none;
+          &::before,
+          &::after,
+          span {
+            content: "";
+            width: 100%;
+            height: 2px;
+            background: $primary-cl;
+            position: absolute;
+            @include transition($t);
+          }
+          &::before {
+            @include transform(rotate(0deg) translate(0px, 0px));
+          }
+          &::after {
+            bottom: 0;
+            @include transform(rotate(0deg) translate(0px, 0px));
+          }
+          span {
+            top: 50%;
+            @include transform(translateY(-50%));
+          }
+          &.active {
+            span {
+              @include transition($t);
+              opacity: 0;
+            }
+            &::before {
+              @include transform(rotate(45deg) translate(9px, 4px));
+              @include transition($t);
+            }
+            &::after {
+              bottom: 0;
+              @include transform(rotate(-45deg) translate(9px, -4px));
+              @include transition($t);
+            }
+          }
+          @include sm {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  @include sm {
+    @include transition($t);
+    background-color: $black-cl;
+  }
+}

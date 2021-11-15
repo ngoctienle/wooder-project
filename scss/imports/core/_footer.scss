@@ -1,0 +1,39 @@
+// css footer
+footer {
+  background-color: $black-cl;
+  $letter-spc: 0.6px;
+  height: var(--height-footer);
+  .container {
+    height: 100%;
+    .footer-main {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include xs {
+        flex-direction: column;
+      }
+      .copy-right {
+        letter-spacing: $letter-spc;
+        @include text(
+          var(--body12-fs),
+          pr,
+          var(---body12-lh),
+          $light-gray-cl,
+          none
+        );
+      }
+      .back-top {
+        cursor: pointer;
+        letter-spacing: 0.6px;
+        @include text(
+          var(--body12-fs),
+          pr,
+          var(---body12-lh),
+          $light-gray-cl,
+          uppercase
+        );
+      }
+    }
+  }
+}

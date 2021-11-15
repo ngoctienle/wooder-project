@@ -1,0 +1,339 @@
+// css img, button, heading, title, input, elements, components...
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  &.--center {
+    margin: 0 auto;
+    display: block;
+  }
+}
+a {
+  text-decoration: none;
+}
+
+// colors
+.--white-cl {
+  color: $white-cl;
+}
+.--black-cl {
+  color: $black-cl;
+}
+
+// css article
+article {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "pb";
+    display: block;
+  }
+  h1 {
+    font-size: var(--h1-fs);
+    line-height: var(--h1-lh);
+    margin: 0 0 0.67rem 0;
+  }
+  h2 {
+    font-size: var(--h1-fs);
+    line-height: var(--h1-lh);
+    margin: 0 0 0.75rem 0;
+  }
+  h3 {
+    font-size: var(--h2-fs);
+    line-height: var(--h2-lh);
+    margin: 0 0 0.83rem 0;
+  }
+  h4 {
+    // font-size: var(--h4-fs);
+    // line-height: var(--h4-lh);
+    margin: 0 0 1.12rem 0;
+  }
+  h5 {
+    // font-size: var(--h5-fs);
+    // line-height: var(--h5-lh);
+    margin: 0 0 1.5rem 0;
+  }
+  h6 {
+    font-size: 0.67rem;
+    margin: 0 0 1.67rem 0;
+  }
+
+  p {
+    margin: 0 0 1.12rem 0;
+  }
+  strong {
+    // font-family: ib; // font bold
+  }
+  ol,
+  ul {
+    list-style: initial;
+    padding-left: 18px;
+  }
+  img {
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 25px auto;
+  }
+  .video {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+    margin: 25px auto;
+    iframe,
+    video {
+      position: absolute;
+      @include size(100%);
+      top: 0;
+      left: 0;
+    }
+  }
+  @include xs {
+    img {
+      margin: 20px auto;
+    }
+  }
+}
+.pd {
+  padding-top: var(--pd-section);
+  padding-bottom: var(--pd-section);
+}
+
+.text-box {
+  max-width: 50rem;
+  &.--tpd {
+    padding-left: 11rem;
+  }
+  .heading {
+    font-family: "pb";
+    position: relative;
+    &.--h1 {
+      letter-spacing: var(--h1-ltspc);
+      @include text(var(--h1-fs), pb, var(--h1-lh), $primary-cl, uppercase);
+    }
+    &.--h2 {
+      letter-spacing: var(--h2-ltspc);
+      @include text(var(--h2-fs), pb, var(--h2-lh), $black-cl, uppercase);
+    }
+    &.--h2-yellow {
+      letter-spacing: var(--h2-ltspc);
+      @include text(var(--h2-fs), pb, 50px, $primary-cl, uppercase);
+    }
+
+    &.--line::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 3rem);
+      @include transform(translateY(-50%));
+      @include size(8rem, 0.1rem);
+      background: $gray-cl;
+    }
+  }
+  .description {
+    letter-spacing: var(--des-ltspc);
+    @include text(var(--body16-fs), pr, var(--body16-lh), $gray-cl, none);
+    @include overtext(3);
+  }
+  .learn-more {
+    $learn-ltspc: 2.8px;
+    span {
+      letter-spacing: $learn-ltspc;
+      position: relative;
+      margin-right: 5px;
+      @include text(
+        var(--body14-fs),
+        pb,
+        var(--body14-lh),
+        $black-cl,
+        uppercase
+      );
+      &::before {
+        content: "";
+        width: 40px;
+        height: 2px;
+        background: $primary-cl;
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        @include transition($button-hover);
+      }
+    }
+    &:hover {
+      span {
+        &::before {
+          left: 64%;
+          @include transition($button-hover2);
+        }
+      }
+    }
+  }
+}
+
+.box {
+  overflow: hidden;
+  position: relative;
+  height: 33.3rem;
+  width: 51.5rem;
+  .box__img {
+    width: 100%;
+    @include midimg;
+  }
+}
+
+.btn {
+  border: 1px solid $white-cl;
+  padding: 2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: max-content;
+  position: relative;
+  @include transition($t);
+  overflow: hidden;
+  span {
+    z-index: 5;
+    letter-spacing: 2.8px;
+    @include text(var(--body14-fs), pb, normal, $white-cl, uppercase);
+    @include transform-origin(center left);
+    @include transition($t);
+    @include sm {
+      @include transition($t);
+      letter-spacing: 2.5px;
+      @include text(12px, pb, normal, $white-cl, uppercase);
+    }
+    @include xs {
+      letter-spacing: 2.2px;
+      @include text(10px, pb, normal, $white-cl, uppercase);
+    }
+  }
+  img {
+    z-index: 5;
+  }
+  &::before,
+  &::after {
+    padding: 3.1rem 3rem;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(-100% - 30px);
+    height: calc(100% - 29px);
+    width: calc(100% + 20px);
+    color: #fff;
+    border-radius: 2px;
+    @include transform(skew(-19deg));
+  }
+
+  &::after {
+    background: $white-cl;
+    @include transition($button-hover);
+    z-index: 0;
+    opacity: 0.8;
+  }
+  &::before {
+    background: $primary-cl;
+    z-index: 5;
+    @include transition($button-hover2);
+  }
+
+  &:hover::after {
+    left: calc(0% - 10px);
+    @include transition($button-hover1);
+  }
+  &:hover::before {
+    left: calc(0% - 10px);
+    @include transition($button-hover2);
+  }
+  @include sm {
+    padding: 1.5rem 2.5rem;
+  }
+  @include xs {
+    padding: 1.1rem 2.1rem;
+  }
+}
+
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  @include transition($t);
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+    @include transition($t);
+  }
+}
+
+.modal {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include size(100vw, 100vh);
+  background: rgba($color: #000000, $alpha: 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  &__wrap {
+    width: calc(100vw - 60rem);
+    @include transition($t);
+    @include md {
+      width: calc(100vw - 30rem);
+      @include transition($t);
+    }
+    @include sm {
+      width: calc(100vw - 20rem);
+      @include transition($t);
+    }
+    @include xs {
+      width: calc(100vw - 10rem);
+      @include transition($t);
+    }
+    @include xxs {
+      width: calc(100vw - 5rem);
+      @include transition($t);
+    }
+    &-iframe {
+      border: 5px solid #eee;
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 55.6%;
+      @include transition($t);
+      iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .close {
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        @include text(15px, pb, normal, $primary-cl, normal);
+        @include size(3rem);
+        @include br(100px);
+        background: $white-cl;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+}

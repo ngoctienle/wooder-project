@@ -1,0 +1,36 @@
+// css navigator (Menu)
+.nav {
+  width: 100vw;
+  height: calc(100vh - var(--height-header));
+  position: fixed;
+  top: var(--height-header);
+  left: 0;
+  background: #161616;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+
+  opacity: 0;
+  pointer-events: none;
+  @include transition($t);
+  li {
+    padding: 1rem;
+    a {
+      padding: 1rem 3rem;
+      letter-spacing: 0.375px;
+      @include text(15px, pb, 2.25rem, $white-cl, uppercase);
+      @include transition($t);
+
+      &.activeMenu {
+        color: $primary-cl;
+        @include transition($t);
+      }
+    }
+  }
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    @include transition($t);
+  }
+}
