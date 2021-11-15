@@ -85,4 +85,18 @@ $button-hover2: left $t2 $cubic2;
     --height-footer: 70px;
     --pd-section: 50px;
   }
+  @media (max-width: $xxs-max) {
+    // Small Mobile
+    --h1-fs: 5rem;
+    --h1-lh: 4rem;
+    --h1-ltspc: 7.5px;
+
+    --h2-fs: 3rem;
+    --h2-lh: 3rem;
+    --h2-ltspc: 2px;
+
+    --height-header: 66px;
+    --height-footer: 70px;
+    --pd-section: 50px;
+  }
 }

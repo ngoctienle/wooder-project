@@ -390,7 +390,8 @@
     width: 100%;
     padding-top: 18rem;
     padding-bottom: 18rem;
-    // background: url(/img/video-img.jpg) no-repeat center;
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     background-attachment: fixed;
     position: relative;

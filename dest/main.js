@@ -81,6 +81,7 @@ menus.each(function (index) {
     e.preventDefault();
     window.scrollTo({
       top: section.offset().top - scrollHeader + 1,
+      behavior: "smooth",
     });
     removeActiveMenu();
     $(this).addClass("active");
@@ -96,6 +97,7 @@ menusNav.each(function (index) {
     setTimeout(function () {
       window.scrollTo({
         top: section.offset().top - scrollHeader + 1,
+        behavior: "smooth",
       });
     }, 500);
     removeActiveMenuNav();
